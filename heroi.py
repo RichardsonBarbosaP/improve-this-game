@@ -1,19 +1,14 @@
 from personagem import Personagem
-from heroi import Heroi
+#from heroi import Heroi
 
 class Heroi(Personagem):
     """
     A classe Heroi representa as características de um herói no jogo.
     Herda da classe Personagem.
     """
-    def __init__(self, nome, vida, ataque, defesa, coragem):
-        super().__init__(nome, vida, ataque, defesa, coragem)
-        niveis_validos = ['Baixa', 'Média', 'Alta']
-        if coragem not in niveis_validos:
-            raise ValueError(f"Status de coragem inválido! Escolha entre {niveis_validos}")
-        if coragem == 'Alta':   
-            self.ataque += 8 # aumenta o ataque do herói em 8 pontos
-        self.coragem = coragem
+    def __init__(self, nome, vida, ataque, defesa):
+        super().__init__(nome, vida, ataque, defesa)
+        self.coragem = None
 
     def ataque(self, vilao):
         """

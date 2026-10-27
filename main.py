@@ -2,11 +2,18 @@ from personagem import Personagem
 from heroi import Heroi
 from vilao import Vilao
 
+import pygame
+import sys
+
+pygame.init()
+screen = pygame.display.set_mode((1280, 800))
+pygame.display.set_caption("Jogo de Aventura")
+
 def main():
     # Criando personagens e vilões (Nome, Vida, Ataque, Defesa, Coragem/Intimidação)
-    heroi = Heroi('Star Boy', 120, 35, 30, 'Média')
-    npc = Personagem('Cone Guy', 100, 20, 20, 'Baixa')
-    vilao = Vilao('Supernova', 250, 40, 30, 'Média')
+    heroi = Heroi('Star Boy', 120, 35, 30)
+    npc = Personagem('Cone Guy', 100, 20, 20)
+    vilao = Vilao('Supernova', 250, 40, 30)
 
     # Mostrando personagens
     print(heroi)
@@ -27,3 +34,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+pygame.quit()
+sys.exit()

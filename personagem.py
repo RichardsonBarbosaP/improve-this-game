@@ -2,13 +2,13 @@ class Personagem:
     """
     A classe Personagem representa um personagem genérico em um jogo.
     """
-    def __init__(self, nome, vida, ataque, defesa, coragem, intimidacao):
+    def __init__(self, nome, vida, ataque, defesa):
         self.nome = nome
         self.vida = vida
         self.ataque = ataque
         self.defesa = defesa
-        self.coragem = coragem
-        self.intimidacao = intimidacao
+        #self.coragem = coragem
+        #self.intimidacao = intimidacao
 
     def upgrade_vida(self, incremento=10):
         """
@@ -35,4 +35,4 @@ class Personagem:
         self.nome = nome_editado
 
     def __str__(self):
-        return f'Personagem: {self.nome}, Idade: {self.idade}, Vida: {self.vida}'
+        return f'Personagem: {self.nome}, Vida: {self.vida}, Ataque: {self.ataque}, Defesa: {self.defesa}'
