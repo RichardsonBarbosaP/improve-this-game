@@ -1,39 +1,54 @@
-from personagem import Personagem
-from heroi import Heroi
-from vilao import Vilao
-
 import pygame
 import sys
-
-pygame.init()
-screen = pygame.display.set_mode((1280, 800))
-pygame.display.set_caption("Jogo de Aventura")
+from objects.heroi import Heroi
+from objects.vilao import Vilao
 
 def main():
+    pygame.init()
+    screen = pygame.display.set_mode((640, 480))
+    pygame.display.set_caption("Placeholder")
+
     # Criando personagens e vilões (Nome, Vida, Ataque, Defesa, Coragem/Intimidação)
     heroi = Heroi('Star Boy', 120, 35, 30)
-    npc = Personagem('Cone Guy', 100, 20, 20)
     vilao = Vilao('Supernova', 250, 40, 30)
-
-    # Mostrando personagens
     print(heroi)
-    print(npc)
     print(vilao)
+    heroi.golpe(vilao)
+    vilao.golpe(heroi)
 
-    # Ataques
-    heroi.ataque(vilao)
-    vilao.ataque(heroi)
+    running = True # enquanto o jogo estiver rodando, o loop continua
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
 
-    # Melhorando a vida do herói
-    heroi.upgrade_vida(20)
-    print(f'{heroi.nome} após upgrade de vida: {heroi.vida}')
+        screen.fill((0, 0, 0))  # Preenche a tela com preto
+        pygame.display.flip()  # Atualiza a tela
 
-    # Mudando nome do NPC
-    npc.update_nome('Cone Guy')
-    print(f'Nome atualizado: {npc.nome}')
+#def __str__(self):
+    #return f'Personagem: {self.nome}, Vida: {self.vida}, Ataque: {self.ataque}, Defesa: {self.defesa}'
+
+# def golpe(self, alvo):
+    # """
+    # Mecânica de ataque entre personagens. Calcula o dano com base no ataque do atacante e na defesa do alvo.
+    # """
+    # dano = self.golpe - alvo.defesa
+    # dano = min(dano, 1)
+    # alvo.vida -= dano
+    
+    # if alvo.vida < 0:  
+    #     alvo.vida = 0
+
+    # print(f'{self.nome} atacou {alvo.nome}!')
+    # alvo.downgrade_vida()
+
+
+    # # Melhorando a vida do herói
+    # heroi.upgrade_vida(20)
+    # print(f'{heroi.nome} após upgrade de vida: {heroi.vida}')
+
+pygame.quit() # Encerra o Pygame
+sys.exit() # encerrar o programa
 
 if __name__ == "__main__":
     main()
-
-pygame.quit()
-sys.exit()
